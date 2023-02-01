@@ -1,0 +1,27 @@
+-- Table: public.deportistas
+
+-- DROP TABLE IF EXISTS public.deportistas;
+
+CREATE TABLE IF NOT EXISTS public.deportistas
+(
+    "nombre " character varying COLLATE pg_catalog."default" NOT NULL,
+    "especialidad " character varying COLLATE pg_catalog."default" NOT NULL,
+    "edad " integer NOT NULL,
+    "altura " integer NOT NULL,
+    "peso " integer NOT NULL,
+    "nacionalidad " character varying COLLATE pg_catalog."default" NOT NULL,
+    record_personal character varying COLLATE pg_catalog."default",
+    "descripcion " character varying COLLATE pg_catalog."default",
+    energia integer NOT NULL,
+    "fuerza " integer NOT NULL,
+    resistencia integer NOT NULL,
+    agilidad integer NOT NULL,
+    "lesiones " integer NOT NULL,
+    "dedicacion " integer NOT NULL,
+    "profesionalismo " integer NOT NULL
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.deportistas
+    OWNER to postgres;
