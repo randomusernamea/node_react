@@ -12,7 +12,7 @@ function MainComp() {
     }
     
     const [search, setSearch] = useState();
-    const [personas, setPersonas] = useState();
+    const [personas, setPersonas] = useState([]);
     useEffect(() => {getDeportistas()}, [])
     
     const onChangeSearch = (e) => {
