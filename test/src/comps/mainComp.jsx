@@ -4,15 +4,15 @@ import React from 'react';
 function MainComp() {
     
     const [search, setSearch] = useState();
-    const[personas, setPersonas] = useState()
-    setPersonas();
+    const [personas, setPersonas] = useState();
+    
     const onChangeSearch = (e) => {
         setSearch(e.target.value);
       }
     const changeContent = (e) => {
 
     }
-    /*{personas.map((deportista) => {
+    {personas.map((deportista) => {
                 return(
                     <div className="content_card visible"> 
                         <div className='nameImgEspecialidad'>
@@ -26,10 +26,9 @@ function MainComp() {
                     </div>
                     );
                 })
-            }*/
+            }
     return (
       <div className="Main">
-        asdasdasd
          <input className='searching' value = {search} onChange={onChangeSearch} type="text" />
       </div>
     );
