@@ -5,3 +5,5 @@ const {validateUser} = require('../validators/middleware')
 
 
 router.get("/", validateUser, getDeportistas)
+
+module.exports = router
