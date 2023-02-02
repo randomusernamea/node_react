@@ -1,8 +1,9 @@
-const knex = require("../knexfile")
+const knex = require("../knexfile");
 
-
-exports.getDeportistas = () =>{
-    knex("deportistas").select('*').then(function(data){
-        res.status(200).send(data)
-    })
-}
+exports.getDeportistas = (req, res) => {
+  knex("deportistas")
+    .select("*")
+    .then((data) => {
+      res.status(200).send(data);
+    });
+};
