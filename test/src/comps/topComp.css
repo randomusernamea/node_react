@@ -1,0 +1,17 @@
+#topComp{
+    height:120px;
+}
+
+
+#home-button{
+    width:50px;
+    height:24px;
+    background-color: gold;
+    border-radius: 4px;
+    text-align: center;
+    border-style: solid;
+}
+#home-p{
+    padding-bottom: 3px;
+}
+
