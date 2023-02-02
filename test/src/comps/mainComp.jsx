@@ -5,7 +5,7 @@ import { getDeportista } from "../API/rule_deportistas";
 import './mainComp.css'
 
 function MainComp() {
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState("");
   const [personas, setPersonas] = useState([]);
 
   const getDeportistas = async () => {
@@ -21,7 +21,7 @@ function MainComp() {
   };
   const changeContent = (e) => {
 
-    
+
   };
 
   return (
@@ -34,7 +34,7 @@ function MainComp() {
       />
 
       <div className="contentContainer">
-        {personas.map((deportista) => {
+        {personas.filter(deportista => deportista.nombre.toLowerCase().includes(search.toLowerCase())).map((deportista) => {
           return (
             <div className="content_card visible">
               <div className="nameImgEspecialidad">
