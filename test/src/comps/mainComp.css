@@ -17,7 +17,7 @@
 
 .contentContainer {
     width: 80%;
-    height: 80vh;
+    padding-top: 50px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
