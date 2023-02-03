@@ -1,5 +1,6 @@
 const knex = require("../knexfile");
 
+
 exports.getDeportistas = (req, res) => {
   knex("deportistas")
     .select("*")
