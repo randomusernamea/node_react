@@ -4,6 +4,7 @@ import API from "../API/rule_API";
 import { getDeportista } from "../API/rule_deportistas";
 import './topComp.css'
 import img from './images/logoSenpai.png'
+import GoTo from "./GoTo"
 
 
 function TopComp(){
@@ -11,6 +12,7 @@ function TopComp(){
         <div id="topComp">
             <div id="home-button"><p id="home-p">Home</p></div>
             <img id="img-senpai" alt="Img Logo Senpai" src={img}/>
+            <GoTo/>
         </div>
     )
 }
