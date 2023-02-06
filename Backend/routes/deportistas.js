@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {register, login, getImage, postImage, getDeportistas, crearDeportista} = require('../controllers/deportistas')
-const {checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, validateUser, validateDeportista} = require('../validators/middleware')
+const {usuarioValido, passwordValido, permisosValido,checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, validateUser, validateDeportista} = require('../validators/middleware')
 
 
 router.get("/", validateUser, getDeportistas)
