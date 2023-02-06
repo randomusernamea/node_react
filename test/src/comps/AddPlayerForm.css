@@ -1,1 +1,26 @@
 /*TODO*/
+
+.addPlayerForm{
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+}
+.formSubmit{
+    border-style: outset;
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    background-color: beige;
+}
+.formInput{
+    width: 350px;
+}
+.formLabel{
+    text-align: right;
+    width: 100%;
+}
+
+.formSubmitDiv{
+    display: grid;
+    grid-template-columns: 4fr 6fr;
+}
