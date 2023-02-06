@@ -3,6 +3,7 @@ import React from "react";
 import API from "../API/rule_API";
 import { getDeportista } from "../API/rule_deportistas";
 import './mainComp.css'
+import {getImage} from "../API/rule_image"
 
 function MainComp() {
   const [search, setSearch] = useState("");

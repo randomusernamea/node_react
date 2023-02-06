@@ -1,5 +1,8 @@
 const knex = require("../knexfile");
-
+const __rootDir = "/Users/Pablo/Desktop/SAP/234/node_react/Backend"
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b"
 
 exports.getDeportistas = (req, res) => {
   knex("deportistas")
@@ -26,4 +29,53 @@ exports.crearDeportista = (req,res) => {
   datos.profesionalismo = Number(datos.profesionalismo)
   knex("deportistas").insert(datos).then(res.status(200).send('Valor insertado de forma exitosa'))
   res.status(200)
+}
+
+
+exports.getImage = (req,res) => {
+  res.sendFile(__rootDir + '/public/images/' + req.params.route)
+}
+
+exports.postImage = (req,res) => {
+
+}
+
+exports.login = (req,res) => {
+  const {username, password} = req.body;
+  knex("users").select("*").where("username", username).then(
+      function(data){
+          if(data.length != 1) {
+              res.status(400).json("Usuario o contrasena incorrectos")
+          }
+          const user = data[0]
+          const validPassword = bcrypt.compareSync(password, user.password)
+          if (validPassword){
+              const token = jwt.sign({
+              username: user.username,permisos: user.permisos, date: Date.now()}, SECRET_KEY);
+              res.status(200).json({error: null, data:'Login exitoso', token})
+          }
+          else { return res.status(400).json({error: "Usuario o contrasena incorrectos"})}
+      }
+  )
+}
+
+
+
+exports.register = (req,res) => {
+    const {username, password, permisos} = req.body
+    const salt = bcrypt.genSaltSync(12)
+    const passHash = bcrypt.hashSync(password, salt)
+    knex("users").select("*").where("username", username).then(
+        function(data){
+            if (data.length != 0){
+                res.status(400).json({error:"Usuario ya registrado"})
+            }
+            else {
+                knex("users").insert({username: username, password: passHash, permisos: permisos})
+            .then(function(data){
+            res.status(200).send(data)
+        })
+            }
+        }
+    )
 }
