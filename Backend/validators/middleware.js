@@ -2,7 +2,7 @@ const {validationResult, body, check, param} = require("express-validator")
 SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b"
 const jwt = require("jsonwebtoken")
 
-
+//legacy
 exports.validateUser = (req,res,next) => {
      next();
 }
@@ -10,6 +10,17 @@ exports.validateUser = (req,res,next) => {
 exports.validateDeportista = (req,res,next) => {
      next();
 }
+
+exports.is1 = (req,res,next) => {
+    console.log(req.loginInfo)
+    if (req.loginInfo.permisos === 1){
+        next()
+    }
+    else{
+        res.status(403).json({error:"ACESS DENIED"})
+    }
+}
+
 
 exports.verifyToken = (req,res,next) =>{
      const token = req.header('Authorization')
