@@ -53,5 +53,7 @@ exports.checkProfesionalismo = [check("profesionalismo").isInt({min: 0, max: 100
 exports.checkAgilidad = [check("agilidad").isInt({min: 0, max: 100})]
 exports.checkImage = [check("image").isLength({min: 1, max:400})]
 
-
+exports.usuarioValido = [body("username").exists().withMessage("No hay usuario").isLength({max:20}).withMessage("Username muy largo")]
+exports.passwordValido = [body("password").exists().withMessage("No hay password").isLength({max:63}).withMessage("Username muy largo")]
+exports.permisosValido = [body("permisos").exists().withMessage("No hay permisos").isFloat({min:1,max:3}).isInt().withMessage("El permiso tiene que ser un entero de valor 1, 2 o 3")]
 

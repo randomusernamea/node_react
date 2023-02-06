@@ -8,7 +8,7 @@ router.get("/", validateUser, getDeportistas)
 router.post("/", checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, crearDeportista)
 router.get("/deportista/images/:route", getImage)
 router.post("/images/:route", postImage)
-router.post("/login", login)
-router.post("/register", register)
+router.post("/login",usuarioValido, passwordValido, runValidate, login)
+router.post("/register",usuarioValido, passwordValido, permisosValido, runValidate, register)
 
 module.exports = router
