@@ -5,6 +5,6 @@ import { useState, useEffect } from "react";
 
 function imageComp(){
     return (
-        <img/>
+        <img src=""/>
     )
 }
