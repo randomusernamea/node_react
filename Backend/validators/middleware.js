@@ -1,4 +1,6 @@
 const {validationResult, body, check, param} = require("express-validator")
+SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b"
+const jwt = require("jsonwebtoken")
 
 
 exports.validateUser = (req,res,next) => {
@@ -8,6 +10,24 @@ exports.validateUser = (req,res,next) => {
 exports.validateDeportista = (req,res,next) => {
      next();
 }
+
+exports.verifyToken = (req,res,next) =>{
+     const token = req.header('Authorization')
+     if (!token){
+         return res.status(401).json({error: 'Acceso denegado'})
+     }
+     try{
+         const verified = jwt.verify(token, SECRET_KEY)
+         req.loginInfo = verified
+         if (verified.date < (Date.now() - (5*60*1000))){
+             res.status(401).json({error:'Token expirado'})
+         }
+         next()
+     }
+     catch(error){
+         res.status(400).json({error: error.message})
+     }
+ }
 
 exports.runValidate = (req,res,next) => {
      const errors = validationResult(req)
