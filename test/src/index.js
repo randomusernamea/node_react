@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css';
 import App from './App';
+import RegisterComp from './comps/RegisterComp'
+import LoginComp from './comps/LoginComp'
 import ErrorComp from './comps/ErrorComp'
 import AddPlayerForm from './comps/AddPlayerForm'
 
@@ -16,6 +18,16 @@ const router = createBrowserRouter([
     path: "/addPlayer",
     element: <AddPlayerForm/>,
     errorElement: <ErrorComp text="Adding a player went terribly wrong." />,
+  },
+  {
+    path: "/registrar",
+    element: <RegisterComp/>,
+    errorElement: <ErrorComp text="Register component failed to load."/>,
+  },
+  {
+    path: "/login",
+    element: <LoginComp/>,
+    errorElement: <ErrorComp text="Login component failed to load."/>,
   },
   {
     path: "*",
