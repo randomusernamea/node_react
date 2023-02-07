@@ -2,9 +2,11 @@ import React from "react";
 import './LoginComp.css';
 import {useState} from 'react'
 import { registrarUsuario } from "../API/rule_Registrar";
+import { useNavigate } from "react-router";
 
 
 function RegisterComp() {
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState("")
     const [password, setPassword] = useState("")
     const [permisos, setPermisos] = useState("")
@@ -19,14 +21,16 @@ function RegisterComp() {
       };
 
       const onSubmitRegister = (e) => {
+        e.preventDefault();
         console.log(e)
-        const user = {usuario: usuario, password: password, permisos: permisos}
+        const user = {username: usuario, password: password, permisos: permisos}
         registrarUsuario(user).then((response) => {
-
+            navigate("/login")
         })
+        
     }
     return (
-        <form className = "formSubmit"onSubmit={onSubmitRegister}>
+        <form className = "formSubmit" onSubmit={onSubmitRegister} method="post">
             <div className ="formSubmitDiv"><label className = "formLabel" htmlFor="usuario">Usuario</label>
                 <input className = "formInput" onChange={onChangeValueUsuario} value={usuario} required placeholder = "Usuario" type ="text" name="Usuario"/></div>
                 

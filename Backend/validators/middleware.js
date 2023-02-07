@@ -41,6 +41,7 @@ exports.verifyToken = (req,res,next) =>{
  }
 
 exports.runValidate = (req,res,next) => {
+    console.log(req.body)
      const errors = validationResult(req)
      if (!errors.isEmpty()){
          return res.status(422).json({error: errors.array()[0].msg})
