@@ -11,8 +11,6 @@ exports.getDeportistas = (req, res) => {
       res.status(200).send(data);
     });
 };
-
-//Should work
 exports.crearDeportista = (req,res) => {
   console.log(req.body)
   datos = req.body;
@@ -30,16 +28,12 @@ exports.crearDeportista = (req,res) => {
   knex("deportistas").insert(datos).then(res.status(200).send('Valor insertado de forma exitosa'))
   res.status(200)
 }
-
-
 exports.getImage = (req,res) => {
   res.sendFile(__rootDir + '/public/images/' + req.params.route)
 }
-
 exports.postImage = (req,res) => {
 
 }
-
 exports.login = (req,res) => {
   const {username, password} = req.body;
   knex("users").select("*").where("username", username).then(
@@ -58,9 +52,6 @@ exports.login = (req,res) => {
       }
   )
 }
-
-
-
 exports.register = (req,res) => {
     const {username, password, permisos} = req.body
     const salt = bcrypt.genSaltSync(12)
