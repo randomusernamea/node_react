@@ -10,14 +10,17 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorComp text="Something went terribly wrong." />,
   },
   {
     path: "/addPlayer",
     element: <AddPlayerForm/>,
+    errorElement: <ErrorComp text="Adding a player went terribly wrong." />,
   },
   {
     path: "*",
-    element: <ErrorComp text="404 not found"/>
+    element: <ErrorComp text="404 not found"/>,
+    errorElement: <ErrorComp text="Somehow the error component got an error, this shouldn't happen." />,
   },
 ]);
 
