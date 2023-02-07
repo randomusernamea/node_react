@@ -2,7 +2,7 @@ import React from "react";
 import {useEffect} from 'react';
 import { useNavigate } from "react-router";
 
-function ErrorComp() {
+function ErrorComp(props) {
     const navigate = useNavigate();
     useEffect(() => {
         waitThenNavigate();
@@ -12,7 +12,7 @@ function ErrorComp() {
     }
 
     return (
-        <div><h1>404 page not found</h1>
+        <div><h1>{props.text}</h1>
         <p>Redirecting to home page...</p></div>
     )
 }

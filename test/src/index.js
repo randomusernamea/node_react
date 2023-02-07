@@ -17,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <ErrorComp />
+    element: <ErrorComp text="404 not found"/>
   },
 ]);
 
