@@ -2,8 +2,10 @@ import React from "react";
 import './LoginComp.css';
 import {useState} from 'react'
 import { registrarUsuario } from "../API/rule_Registrar";
+import { useNavigate } from "react-router";
 
 function LoginComp() {
+    const navigate = useNavigate();
     const [usuario, setUsuario] = useState("")
     const [password, setPassword] = useState("")
     const onChangeValueUsuario = (e) => {
@@ -14,14 +16,15 @@ function LoginComp() {
       };
 
       const onSubmitRegister = (e) => {
-        console.log(e)
+        e.preventDefault()
         const user = {usuario: usuario, password: password}
         registrarUsuario(user).then((response) => {
             localStorage.setItem("JSONToken", response.token)
+            navigate("/")
         })
     }
     return (
-        <form className = "formSubmit"onSubmit={onSubmitRegister}>
+        <form className = "formSubmit"onSubmit={onSubmitRegister} method="post">
             <div className ="formSubmitDiv"><label className = "formLabel" htmlFor="usuario">Usuario</label>
                 <input className = "formInput" onChange={onChangeValueUsuario} value={usuario} required placeholder = "Usuario" type ="text" name="Usuario"/></div>
                 
