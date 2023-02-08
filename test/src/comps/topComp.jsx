@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
 import React from "react";
-import API from "../API/rule_API";
-import { getDeportista } from "../API/rule_deportistas";
 import './topComp.css'
 import img from './images/logoSenpai.png'
 import GoTo from "./GoTo"
