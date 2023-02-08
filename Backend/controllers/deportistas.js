@@ -31,7 +31,7 @@ exports.crearDeportista = (req,res) => {
   res.status(200)
 }
 exports.getImage = (req,res) => {
-  res.sendFile(__rootDir + '/public/images/' + req.params.route)
+  res.sendFile(__rootDir + '/images/' + req.params.route)
 }
 exports.postImage = (req,res) => {
 
