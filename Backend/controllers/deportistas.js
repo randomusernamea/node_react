@@ -6,6 +6,11 @@ SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b";
 
 
 
+exports.subirImagen = (req,res) => {
+    res.status(200).json({'error': 'none'})
+}
+
+
 exports.getDeportistas = (req, res) => {
   knex("deportistas")
     .select("*")
