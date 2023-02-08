@@ -2,7 +2,9 @@ const knex = require("../knexfile");
 const __rootDir = "/Users/Pablo/Desktop/SAP/234/node_react/Backend"
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b"
+SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b";
+
+
 
 exports.getDeportistas = (req, res) => {
   knex("deportistas")
