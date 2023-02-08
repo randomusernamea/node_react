@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import './GoTo.css'
 
 
-function GoTo(){
+function GoTo(params){
     return (
-        <Link to={"/addPlayer"}>
-            <p>sdfsdfsdf</p>
+        <Link to={params.link}>
+            <p>{params.text}</p>
         </Link>
     )
 }

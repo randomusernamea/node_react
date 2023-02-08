@@ -7,6 +7,7 @@ import RegisterComp from './comps/RegisterComp'
 import LoginComp from './comps/LoginComp'
 import ErrorComp from './comps/ErrorComp'
 import AddPlayerForm from './comps/AddPlayerForm'
+import UploadImageComp from './comps/uploadImageComp'
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginComp/>,
     errorElement: <ErrorComp text="Login component failed to load."/>,
+  },
+  {
+    path: "/uploadImage",
+    element: <UploadImageComp/>,
+    errorElement: <ErrorComp text="Upload component failed to load."/>,
   },
   {
     path: "*",

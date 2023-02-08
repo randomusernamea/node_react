@@ -12,7 +12,10 @@ function TopComp(){
         <div id="topComp">
             <div id="home-button"><p id="home-p">Home</p></div>
             <img id="img-senpai" alt="Img Logo Senpai" src={img}/>
-            <GoTo/>
+            <GoTo link ="/addPlayer" text = "Agregar jugador"/>
+            <GoTo link ="/registrar" text = "Registrar"/>
+            <GoTo link ="/login" text = "Login"/>
+            <GoTo link ="/uploadImage" text = "Subir Imagen"/>
         </div>
     )
 }
