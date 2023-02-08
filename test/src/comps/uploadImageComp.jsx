@@ -7,10 +7,12 @@ import axios from 'axios';
 function UploadImageComp() {
     const [image, setImage] = useState({ preview: '', data: '' })
     const [status, setStatus] = useState('')
+    const [text, setText] = useState('')
     const handleSubmit = async (e) => {
       e.preventDefault()
       let formData = new FormData()
       formData.append('file', image.data)
+      let aux = false;
       try {
         const response = await axios({
           method: "post",
@@ -18,8 +20,13 @@ function UploadImageComp() {
           data: formData,
           headers: { "Content-Type": "multipart/form-data" },
         });
+        aux = true;
       } catch(error) {
         console.log(error)
+      }
+      if (aux){
+        setImage('')
+        setText('Imagen subida exitosamente')
       }
     }
   
@@ -42,6 +49,7 @@ function UploadImageComp() {
         <button type="submit">Submit</button>
       </form>
       {status && <h4>{status}</h4>}
+      <p>{text}</p>
     </div>
   );
 }
