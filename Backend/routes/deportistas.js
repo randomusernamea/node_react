@@ -3,8 +3,23 @@ const router = express.Router();
 const {register, login, getImage, postImage, getDeportistas, crearDeportista} = require('../controllers/deportistas')
 const {is1, verifyToken, usuarioValido, passwordValido, permisosValido,checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, validateUser, validateDeportista} = require('../validators/middleware')
 
+const multer = require('multer')
 
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'images/')
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  },
+})
+const upload = multer({ storage: storage })
+
+router.post('/image', upload.single('file'), function (req, res) {
+    console.log('asd')
+  res.json({})
+})
 router.get("/", /*verifyToken, is1,*/ getDeportistas)
 router.post("/", checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, verifyToken, is1, crearDeportista)
 router.get("/image/:route", /*verifyToken, is1,*/ getImage)

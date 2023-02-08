@@ -12,23 +12,11 @@ app.use(cookieParser());
 app.use(cors());
 app.use('/api', deportistas)
 
-const multer = require('multer')
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'images/')
-  },
-  filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  },
-})
 
-const upload = multer({ storage: storage })
 
-app.post('/api/image', upload.single('file'), function (req, res) {
-    console.log('asd')
-  res.json({})
-})
+
+
 
 
 
