@@ -146,7 +146,7 @@ function AddPlayerForm(){
                 </button>
                 
             </form>
-            <p></p>
+            <p>{texto}</p>
             <GoTo link ="/" text = "Volver al inicio"/>
         </div>
     )
