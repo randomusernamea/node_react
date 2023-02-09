@@ -3,8 +3,11 @@ import './AddPlayerForm.css'
 import {useState} from 'react';
 import { registrarDeportista } from "../API/rule_Crear";
 import {updateDeportista} from "../API/rule_Update";
+import { useNavigate } from "react-router";
+import GoTo from "./GoTo"
 
 function AddPlayerForm(){
+    const navigate = useNavigate();
     const [id, setId] = useState("")
     const [nombre, setNombre] = useState("")
     const [especialidad, setEspecialidad] = useState("")
@@ -22,6 +25,7 @@ function AddPlayerForm(){
     const [profesionalismo, setProfesionalismo] = useState("")
     const [imagen, setImagen] = useState("")
     const [agilidad, setAgilidad] = useState("")
+    const [texto, setTexto] = useState("")
      
     const onSubmitDeportista = (e) => {
         e.preventDefault();
@@ -29,12 +33,16 @@ function AddPlayerForm(){
         peso:peso, nacionalidad:nacionalidad, record_persona:record, descripcion:descripcion, energia:energia, fuerza:fuerza,
         resistencia:resistencia, lesiones:lesiones, dedicacion:dedicacion, 
         profesionalismo:profesionalismo, image:imagen, agilidad:agilidad}
-        if (e.target[17].checked) {registrarDeportista(deportista).then((response) => {
-
-        })}
+        if (e.target[17].checked){
+          setTexto('Agregando jugador')
+          registrarDeportista(deportista).then((response) => {
+            setTexto('Jugador agregado exitosamente');
+          })
+        }
         else {
+          setTexto('Haciendo Update')
           updateDeportista(deportista).then((response)=> {
-
+            setTexto('Update realizado exitosamente')
           })
         }
     }
@@ -138,6 +146,8 @@ function AddPlayerForm(){
                 </button>
                 
             </form>
+            <p></p>
+            <GoTo link ="/" text = "Volver al inicio"/>
         </div>
     )
 }
