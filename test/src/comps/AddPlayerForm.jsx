@@ -2,6 +2,7 @@ import React from "react";
 import './AddPlayerForm.css'
 import {useState} from 'react';
 import { registrarDeportista } from "../API/rule_Crear";
+import {updateDeportista} from "../API/rule_Update";
 
 function AddPlayerForm(){
     const [id, setId] = useState("")
@@ -23,14 +24,20 @@ function AddPlayerForm(){
     const [agilidad, setAgilidad] = useState("")
      
     const onSubmitDeportista = (e) => {
+        e.preventDefault();
         console.log(e)
         const deportista = {id: id, nombre: nombre, especialidad: especialidad, edad:edad, altura:altura,
         peso:peso, nacionalidad:nacionalidad, record_persona:record, descripcion:descripcion, energia:energia, fuerza:fuerza,
         resistencia:resistencia, lesiones:lesiones, dedicacion:dedicacion, 
         profesionalismo:profesionalismo, image:imagen, agilidad:agilidad}
-        registrarDeportista(deportista).then((response) => {
+        if (e.target[17].checked) {registrarDeportista(deportista).then((response) => {
 
-        })
+        })}
+        else {
+          updateDeportista(deportista).then((response)=> {
+
+          })
+        }
     }
     const onChangeValueId = (e) => {
         setId(e.target.value);
@@ -122,9 +129,15 @@ function AddPlayerForm(){
                 <input className = "formInput" onChange={onChangeValueProfesionalismo} value={profesionalismo} required placeholder = "Profesionalismo"type ="text" name="profesionalismo"/></div>
                 <div className ="formSubmitDiv"><label className = "formLabel" htmlFor="image">Imagen:</label>
                 <input className = "formInput" onChange={onChangeValueImagen} value={imagen} required placeholder = "Imagen"type ="text" name="image"/></div>
-                <button id="btn-neon" type="submit">
-                    Enviar Datos
+                <div className ="formSubmitDiv"><label className ="formLabel" htmlFor="tipo">Crear Nuevo</label>
+                <input className ="" type="radio" name="Update or Create" value='Crear'/>
+                <label className ="formLabel" htmlFor="tipo">Hacer update</label>
+                <input className ="" type="radio" name="Update or Create" value='Update'/>
+                  </div>
+                <button id="btn-neon" type="submit" name="crear" value="crear">
+                    Submit
                 </button>
+                
             </form>
         </div>
     )
