@@ -3,13 +3,18 @@ SECRET_KEY="IENB(#HYie-igh*)Ihtgq10b"
 const jwt = require("jsonwebtoken")
 
 
-//legacy
+//deprecated
 exports.validateUser = (req,res,next) => {
      next();
 }
-//todo
+//deprecated
 exports.validateDeportista = (req,res,next) => {
      next();
+}
+
+//todo
+exports.imageIsNot = (req,res,next) => {
+    console.log(req)
 }
 
 exports.is1 = (req,res,next) => {

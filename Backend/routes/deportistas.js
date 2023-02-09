@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {updateDeportista, subirImagen, register, login, getImage, postImage, getDeportistas, crearDeportista} = require('../controllers/deportistas')
-const {is1, verifyToken, usuarioValido, passwordValido, permisosValido,checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, validateUser, validateDeportista} = require('../validators/middleware')
+const {imageIsNot, is1, verifyToken, usuarioValido, passwordValido, permisosValido,checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, validateUser, validateDeportista} = require('../validators/middleware')
 
 const multer = require('multer')
 
@@ -22,7 +22,7 @@ router.post("/", checkId, checkNombre, checkEspecialidad, checkEdad , checkAltur
 router.get("/image/:route", /*verifyToken, is1,*/ getImage)
 router.post("/login",usuarioValido, passwordValido, runValidate, login)
 router.post("/register",usuarioValido, passwordValido, permisosValido, runValidate, register)
-router.put('/image')
+router.put('/image', imageIsNot, upload.single('file'))
 router.put('/', checkId, checkNombre, checkEspecialidad, checkEdad , checkAltura, checkPeso, checkNacionalidad, checkRecord, checkDescripcion, checkEnergia, checkFuerza, checkResistencia, checkProfesionalismo, checkAgilidad, checkImage, runValidate, /*verifyToken, is1, */updateDeportista)
 
 module.exports = router
