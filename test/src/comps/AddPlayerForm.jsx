@@ -25,7 +25,6 @@ function AddPlayerForm(){
      
     const onSubmitDeportista = (e) => {
         e.preventDefault();
-        console.log(e)
         const deportista = {id: id, nombre: nombre, especialidad: especialidad, edad:edad, altura:altura,
         peso:peso, nacionalidad:nacionalidad, record_persona:record, descripcion:descripcion, energia:energia, fuerza:fuerza,
         resistencia:resistencia, lesiones:lesiones, dedicacion:dedicacion, 

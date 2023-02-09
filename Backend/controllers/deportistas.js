@@ -52,7 +52,8 @@ exports.updateDeportista = (req,res) => {
   exists = false;
   knex('deportistas').where('id', datos.id).update(datos).then(
     function(data){
-        res.status(200).send(datos)
+        if (data === 1){res.status(200).send(datos)}
+        else (res.status(404).send("Deportista not found"))
     }
   )
 }

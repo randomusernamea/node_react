@@ -13,7 +13,6 @@ exports.validateDeportista = (req,res,next) => {
 }
 
 exports.is1 = (req,res,next) => {
-    console.log(req.loginInfo)
     if (req.loginInfo.permisos === 1){
         next()
     }
@@ -42,7 +41,6 @@ exports.verifyToken = (req,res,next) =>{
  }
 
 exports.runValidate = (req,res,next) => {
-    console.log(req.body)
      const errors = validationResult(req)
      if (!errors.isEmpty()){
          return res.status(422).json({error: errors.array()[0].msg})
